@@ -14,7 +14,18 @@ export default function App(){
         <Nav />
       </header>
 
-      
+      <main>
+        <Routes>
+          {/* <Route path='/Nav'></Route>
+          <Route path='/:anime_id'></Route>
+          <Route path='/genres/anime'></Route>
+          <Route path='/top/anime'></Route> */}
+        </Routes>
+      </main>
+
+      <footer>
+
+      </footer>
 
     </BrowserRouter>
   )

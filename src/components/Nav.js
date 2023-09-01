@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Nav(){
 
   const [genres, setGenres] = useState()
+  const [genre, setGenre] = useState()
 
   useEffect(() => {
     async function getAnimes(){
@@ -12,26 +13,25 @@ export default function Nav(){
         // const { data } = await axios.get('https://api.jikan.moe/v4/anime')
         const { data } = await axios.get('https://api.jikan.moe/v4/genres/anime')
         // console.log(data.pagination.items.per_page)
-        setGenres(data.data)
-        // console.log(name)
-        // console.log(mal_id)}
+        const names = data.data
+        console.log(genre)
+        setGenres(names.map(name => name.name))
+        
       } catch (err){
         console.log(err)
       }
     }
     getAnimes()
-  }, [genres])
-
-
+  }, [genre])
   
 
   return (
     <>
       <Link>Most popular</Link>
       {
-        <select placeholder="genres" id="genres">
-          {genres.map(( { name }, i ) => {
-            return <option key={i}>{name}</option>
+        <select onChange={(e) => setGenre(e.target.value)}>
+          {genres && genres.map(( genre, i ) => {
+            return <option key={i} value={genre}>{genre}</option>
           })}
         </select>
       }
