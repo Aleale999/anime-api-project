@@ -10,13 +10,10 @@ export default function Nav(){
   useEffect(() => {
     async function getAnimes(){
       try {
-        // const { data } = await axios.get('https://api.jikan.moe/v4/anime')
         const { data } = await axios.get('https://api.jikan.moe/v4/genres/anime')
-        // console.log(data.pagination.items.per_page)
         const names = data.data
-        console.log(genre)
-        setGenres(names.map(name => name.name))
-        
+        setGenres(names.map(genre => genre.name))
+
       } catch (err){
         console.log(err)
       }
@@ -37,7 +34,6 @@ export default function Nav(){
       }
       <input type="text" placeholder='search'/>
       <Link>Highest Score</Link>
-      
     </>
   )
 }

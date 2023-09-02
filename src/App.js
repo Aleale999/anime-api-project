@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
 
 import Nav from './components/Nav'
+import Home from './components/Home'
 
 export default function App(){
 
@@ -16,10 +15,10 @@ export default function App(){
 
       <main>
         <Routes>
-          {/* <Route path='/Nav'></Route>
+          <Route path="/" element={<Home />} />
           <Route path='/:anime_id'></Route>
           <Route path='/genres/anime'></Route>
-          <Route path='/top/anime'></Route> */}
+          <Route path='/top/anime'></Route>
         </Routes>
       </main>
 
