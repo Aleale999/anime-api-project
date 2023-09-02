@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Nav from './components/Nav'
 import Home from './components/Home'
+import AnimeSingle from './components/AnimeSingle'
 
 export default function App(){
 
@@ -16,7 +17,7 @@ export default function App(){
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/:anime_id'></Route>
+          <Route path='/anime_id' element={<AnimeSingle />} />
           <Route path='/genres/anime'></Route>
           <Route path='/top/anime'></Route>
         </Routes>
