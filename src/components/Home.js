@@ -21,12 +21,14 @@ export default function Home(){
   return (
     <>
       <span className='anime-container'>
-        {animeNames.length > 0 && animeNames.map( ({ title, images }) => {
-          console.log(title,images.jpg.image_url)
+        {animeNames.length > 0 && animeNames.map( ({ title, images }, i) => {
           return <span
-            key={animeNames[0]} value={title} className='single-anime-container'>
-            <Link to='/anime_id'><img src={images.jpg.image_url}></img></Link>
-            <h3>{title}</h3>
+            key={i} value={title} className='single-anime-container'>
+            <Link to='/anime_id'>
+              <span className='anime-img'><img src={images.jpg.image_url}/></span>
+              <h3 className='anime-title'>{title}</h3>
+            </Link>
+            
           </span>
         })}
       </span>
