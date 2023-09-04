@@ -7,7 +7,8 @@ export default function Nav(){
 
   return (
     <>
-      <Link to='/MostPopular'>Most popular</Link>
+      <Link to='/MostWatched'>Most Watched</Link>
+      <Link to='/MostPopular'>Most Popular</Link>
       <Link>Highest Score</Link>
     </>
   )
