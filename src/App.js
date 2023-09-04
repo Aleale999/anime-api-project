@@ -17,7 +17,7 @@ export default function App(){
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/anime_id' element={<AnimeSingle />} />
+          <Route path='/:animeId' element={<AnimeSingle />} />
           <Route path='/genres/anime'></Route>
           <Route path='/top/anime'></Route>
         </Routes>

@@ -10,6 +10,7 @@ export default function Home(){
   const [newAnimeNames, setNewAnimeNames] = useState()
 
   const [animeGenreId, setAnimeGenreId] = useState()
+  const [animeId, setAnimeId] = useState()
 
   const [allGenres, setAllGenres] = useState()
   const [genre, setGenre] = useState('All')
@@ -40,9 +41,11 @@ export default function Home(){
       if (genre !== 'All') {
         const { data } = await axios.get(`https://api.jikan.moe/v4/anime?genres=${genre}&page=${pageNumber}`)
         setNewAnimeNames(data.data.map(name=>name))
+        setAnimeId(data.data.map(id => id.mal_id))
       } else {
         const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${pageNumber}`)
         setAnimeNames(data.data.map(name=>name))
+        setAnimeId(data.data.map(id => id.mal_id))
       }
     }
     searchGenres()
@@ -109,11 +112,10 @@ export default function Home(){
       }
       <span className='anime-container'>
         { ((genre === 'All' && !search)) ? animeNames && animeNames.map( ({ title, images }, i) => {
-            
           return (
             <span
               key={i} value={title} className='single-anime-container'>
-              <Link to='/anime_id'>
+              <Link to={`/${animeId[i]}`}>
                 <span className='anime-img'><img src={images.jpg.image_url}/></span>
                 <h3 className='anime-title'>{title}</h3>
               </Link>
@@ -127,7 +129,7 @@ export default function Home(){
             return (
               <span
                 key={i} value={title} className='single-anime-container'>
-                <Link to='/anime_id'>
+                <Link to={`/${animeId[i]}`} >
                   <span className='anime-img'><img src={images.jpg.image_url}/></span>
                   <h3 className='anime-title'>{title}</h3>
                 </Link>
