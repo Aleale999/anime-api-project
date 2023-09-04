@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
@@ -18,17 +18,19 @@ export default function Mostpopular(){
 
   return (
     <>
-      {popular && popular.map(({ title, images }, i) => {
-        return (
-          <span
-            key={i} value={title} className='single-anime-container'>
-            <Link to={`/${animeId[i]}`} >
-              <span className='anime-img'><img src={images.jpg.image_url}/></span>
-              <h3 className='anime-title'>{title}</h3>
-            </Link>
-        
-          </span>
-        )
+      {popular && popular.map(({ title, images, popularity }, i) => {
+        if (popularity) {
+          return (
+            <span
+              key={i} value={title} className='single-anime-container'>
+              <Link to={`/${animeId[i]}`} >
+                <span className='anime-img'><img src={images.jpg.image_url}/></span>
+                <h3 className='anime-title'>{title}</h3>
+              </Link>
+          
+            </span>
+          )
+        }
       })}
     </>
   )

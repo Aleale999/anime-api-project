@@ -9,7 +9,7 @@ export default function Nav(){
     <>
       <Link to='/MostWatched'>Most Watched</Link>
       <Link to='/MostPopular'>Most Popular</Link>
-      <Link>Highest Score</Link>
+      <Link to='/LowestScore'>Lowest Score</Link>
     </>
   )
 }
