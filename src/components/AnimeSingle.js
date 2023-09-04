@@ -8,21 +8,29 @@ export default function AnimeSingle(){
 
   const { animeId } = useParams()
   const [anime, setAnime] = useState()
+  const [image, setImage] = useState()
 
   useEffect(() => {
     async function singleAnime(){
       const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${animeId}/full`)
-      console.log(data.data)
+      console.log(data.data.images.jpg)
       setAnime(data.data)
+      setImage(data.data.images.jpg.large_image_url)
     }
     singleAnime()
   }, [])
 
   return (
     <>
-      <p>{anime && anime.title}</p>
-      <p>{anime && anime.background}</p>
-      <p>{anime && anime.synopsis}</p>
+      <section id='title'>{anime && anime.title}</section>
+      <section id='background'>{anime && anime.background}</section>
+      <section id='synopsis'>{anime && anime.synopsis}</section>
+      <section id='genres'>{anime && anime.genres.map(({ name },i) => {
+        return (
+          <p key={i}>{name}</p>
+        )
+      })}</section>
+      <section><img src={image} /></section>
     </>
   )
 
