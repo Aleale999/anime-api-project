@@ -21,16 +21,11 @@ export default function App(){
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/:animeId' element={<AnimeSingle />} />
-          <Route path='/genres/anime'></Route>
           <Route path='/MostPopular' element={<MostPopular />} />
           <Route path='/MostWatched' element={<MostWatched />} />
           <Route path='/LowestScore' element={<LowestScore />} />
         </Routes>
       </main>
-
-      <footer>
-
-      </footer>
 
     </BrowserRouter>
   )

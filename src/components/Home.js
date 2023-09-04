@@ -100,7 +100,7 @@ export default function Home(){
       <p>{pageNumber}</p>
       <button disabled={pageNumber === lastPage ? true : false} value={2} onClick={(e) => changePage(e.target.value)}>Next-Page</button>
       <input
-        placeholder='Search...' id='search' value={search}
+        placeholder='Search...' id='search' value={search} autoComplete='off' //Add enter instead of refreshing with each letter
         onChange={(e) => setSearch(e.target.value)}></input>
       {
         <select onChange={((e) => setGenre(e.target.value))}>
