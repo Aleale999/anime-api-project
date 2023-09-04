@@ -1,28 +1,6 @@
-.anime-container{
-  display: flex;
-  flex-wrap: wrap;
+@import './components/Home.scss';
+@import './components/Nav.scss';
+@import './components/AnimeSingle.scss';
 
-}
 
-.single-anime-container{
-  width: 20%;
-  box-shadow: 0 0 2px;
-  margin: 1%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  a{
-    width: 100%;
-  }
-  .anime-title{
-    text-decoration: none;
-  }
-  .anime-img{
-    display: block;
-    width: 100%;
-    img{
-      width:100%;
-    }
-  }
-}
+

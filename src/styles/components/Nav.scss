@@ -1,0 +1,27 @@
+* {
+  font-family: system-ui, sans-serif;
+}
+
+.topnav {
+  background-color: #487ceb;
+  overflow: hidden;
+}
+
+.mostWatched, .mostPopular, .lowestScore, .home {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.mostWatched:hover, .mostPopular:hover, .lowestScore:hover, .home:hover {
+  background-color: #ad51d8;
+  color: black;
+}
+
+.mostWatched.active, .mostPopular.active, .lowestScore:active, .home:hover {
+  background-color: #04AA6D;
+  color: white;
+}
