@@ -9,7 +9,7 @@ export default function HighestScore(){
 
   useEffect(() => {
     async function lowScoreAnimes(){
-      const { data } = await axios.get('https://api.jikan.moe/v4/anime?order_by=score')
+      const { data } = await axios.get('/api/v4/anime?order_by=score')
       setScore(data.data.map(name=>name))
       setAnimeId(data.data.map(id => id.mal_id))
     }

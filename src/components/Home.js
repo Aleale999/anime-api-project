@@ -24,7 +24,7 @@ export default function Home(){
   useEffect(() => {
     async function getAnimeGenres(){
       try {
-        const { data } = await axios.get('https://api.jikan.moe/v4/genres/anime')
+        const { data } = await axios.get('/api/v4/genres/anime')
         const names = data.data
         
         setAnimeGenreId(names.map(id => id.mal_id))
@@ -39,11 +39,11 @@ export default function Home(){
   useEffect(()=> {
     async function searchGenres(){
       if (genre !== 'All') {
-        const { data } = await axios.get(`https://api.jikan.moe/v4/anime?genres=${genre}&page=${pageNumber}`)
+        const { data } = await axios.get(`/api/v4/anime?genres=${genre}&page=${pageNumber}`)
         setNewAnimeNames(data.data.map(name=>name))
         setAnimeId(data.data.map(id => id.mal_id))
       } else {
-        const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${pageNumber}`)
+        const { data } = await axios.get(`/api/v4/anime?page=${pageNumber}`)
         setAnimeNames(data.data.map(name=>name))
         setAnimeId(data.data.map(id => id.mal_id))
       }
@@ -74,25 +74,22 @@ export default function Home(){
   useEffect(() => {
     async function getLastPage(){
       if (genre !== 'All') {
-        const { data } = await axios.get(`https://api.jikan.moe/v4/anime?genres=${genre}`)
+        const { data } = await axios.get(`/api/v4/anime?genres=${genre}`)
         setLastPage(data.pagination.last_visible_page)
       } else {
-        const { data } = await axios.get('https://api.jikan.moe/v4/anime')
+        const { data } = await axios.get('/api/v4/anime')
         setLastPage(data.pagination.last_visible_page)
       }
     }
     getLastPage()
   },[genre])
 
-  useEffect(()=>{
-    async function searchByName(){
-      if (search) {
-        const { data } = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}`)
-        setNewAnimeNames(data.data.map(name=>name))
-      }
+  async function searchByName(){
+    if (search) {
+      const { data } = await axios.get(`/api/v4/anime?q=${search}`)
+      setNewAnimeNames(data.data.map(name=>name))
     }
-    searchByName()
-  },[search])
+  }
 
   return (
     <>
@@ -101,7 +98,7 @@ export default function Home(){
       <button disabled={pageNumber === lastPage ? true : false} value={2} onClick={(e) => changePage(e.target.value)}>Next-Page</button>
       <input
         placeholder='Search...' id='search' value={search} autoComplete='off' //Add enter instead of refreshing with each letter
-        onChange={(e) => setSearch(e.target.value)}></input>
+        onChange={(e) => setSearch(e.target.value)} onClick={e => searchByName()}></input>
       {
         <select onChange={((e) => setGenre(e.target.value))}>
           <option value="All">All</option>

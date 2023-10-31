@@ -1,4 +1,2 @@
-```sh
 /api/*  https://api.jikan.moe/:splat   200
 /*  /index.html   200
-```

@@ -9,7 +9,7 @@ export default function Mostpopular(){
 
   useEffect(() => {
     async function popularAnimes(){
-      const { data } = await axios.get('https://api.jikan.moe/v4/anime?order_by=popularity')
+      const { data } = await axios.get('/api/v4/anime?order_by=popularity')
       setPopular(data.data.map(name=>name))
       setAnimeId(data.data.map(id => id.mal_id))
     }

@@ -12,7 +12,7 @@ export default function AnimeSingle(){
 
   useEffect(() => {
     async function singleAnime(){
-      const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${animeId}/full`)
+      const { data } = await axios.get(`/api/v4/anime/${animeId}/full`)
       setAnime(data.data)
       setImage(data.data.images.jpg.image_url)
     }
