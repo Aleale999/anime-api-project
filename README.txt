@@ -1,7 +1,11 @@
 Anime API
-In this project James and I worked together for the realisation of this site which takes really detailed data from a free API about animes. We worked on this as our second project of our bootcamp with General Assembly, and this was the first time we had to find our own API and actually develop and deploy a fully working site using React to make it work and run properly.
-We had the weekend to find an API that was first of all of interest for the both of us so it would also be a fun experience to work on it (and this was also a way to get to know eachother, find common interests) and also that delivered data in a way we could both comprehend and work with, and this was crucial because it seems that some people's only goal is to make it as hard as possible to read the data provided by their own APIs, and lastly we needed an API that actually had sufficient data to actually make it worth it working on, because we found some APIs that only displayed an ID and a name, and that was clearly not enough to actually pass this project.
-James and I both equally contributed to this project, but i was more focused on making the structure of the site whereas he was more focused on styling and also on handling the data. Our goal was to make a site that in the homepage displayed a list of random animes, and also have various functions to sort them. In the beginning we had a fixed plan about what functions we wanted to do, but the API had some limitations that made it really difficult to develop those functions, for example showing animes sorted by their scores. The API had an end point which sorted the animes by their scores, going from the lowest to the highest, but it also displayed only 25 animes per each request, and that limit made it really hard to sort them the way we wanted, so we opted for a sort by lowest scores, but sorting the by both high and low scores can be implemented in the future. That 25 anime limitation was definetly the biggest challenge to overcome, because it put us in a position where we couldnt really handle all the data the way we wanted but we had to send a request to get our data and if something else had to be done send a new request to the API, and even though we had a limit of 3 requests per second, having a search function that kept updating all the results was really difficult.
+Link: AnimeAPI
+
+In this project James and I worked together for the realization of this site which takes really detailed data from a free API about animes. We worked on this as our second project of our bootcamp with General Assembly, and this was the first time we had to find our own API and actually develop and deploy a fully working site using React to make it work and run properly.
+
+We had 2 days to find an API that was first of all of interest for the both of us so it would also be a fun experience to work on it (and this was also a way to get to know each other, find common interests) and also that delivered data in a way we could both comprehend and work with, and this was crucial because it seems that some people's only goal is to make it as hard as possible to read the data provided by their own APIs, and lastly we needed an API that actually had sufficient data to actually make it worth it working on, because we found some APIs that only displayed an ID and a name, and that was clearly not enough to actually pass this project.
+
+James and I both equally contributed to this project, but I was more focused on making the structure of the site whereas he was more focused on styling and also on handling the data. Our goal was to make a site that in the homepage displayed a list of random animes, and also have various functions to sort them. In the beginning we had a fixed plan about what functions we wanted to do, but the API had some limitations that made it really difficult to develop those functions, for example showing animes sorted by their scores. The API had an endpoint which sorted the animes by their scores, going from the lowest to the highest, but it also displayed only 25 animes per each request, and that limit made it really hard to sort them the way we wanted, so we opted for a sort by lowest scores, but sorting the by both high and low scores can be implemented in the future. That 25 anime limitation was definitely the biggest challenge to overcome, because it put us in a position where we couldn't really handle all the data the way we wanted but we had to send a request to get our data and if something else had to be done send a new request to the API, and even though we had a limit of 3 requests per second, having a search function that kept updating all the results was really difficult.
 
 useEffect(()=> {
     async function searchGenres(){
@@ -35,7 +39,7 @@ Also adding a filter that showed animes for each genre was difficult, because we
     getAnimeGenres()
   }, [])
 
-But thankfully everything else was pretty straight forward after understanding how the queries and the different API end points worked, for example, since we were limited to showing only 25 animes per page, we also had to get the number of pages and use buttons that allowed to scroll through pages, and disable these buttons at the first and last page to not make the whole thing bug out and give a 404 NotFound error.
+But thankfully everything else was pretty straight forward after understanding how the queries and the different API endpoints worked, for example, since we were limited to showing only 25 animes per page, we also had to get the number of pages and use buttons that allowed to scroll through pages, and disable these buttons at the first and last page to not make the whole thing bug out and give a 404 NotFound error.
 
 function changePage(target){
     currentPage = pageNumber
@@ -105,6 +109,16 @@ useEffect(() => {
     popularAnimes()
   }, [])
 
-There are bugs of course, we are aware that if you use the search bar to look for an anime the buttons dont get disabled and we will address it.
+Technologies Used
+We used React to build the site, and Axios to get the data from the public API.
 
-We also need to improve the styling of every page, but given the amount of time we had we really didnt want to focus on it but we wanted to make an ugly functioning site rather than a broken pretty looking site.
+Key Learnings
+This project was really useful to understand React more thoroughly. It really helped with understanding Axios and the limits of using a public API.
+
+Known bugs:
+-If you type too fast the API stops working because of the limited amount of requests and returns an error.
+-If you look for an anime, the next page and the previous page don’t get updated depending on the number of pages there are with that search query.
+
+Future improvements:
+-Fix the search bar, given the limited amount of requests to the API, it needs to send the request only once and not for every letter typed.
+We also need to improve the styling of every page, but given the amount of time we had we really didn't want to focus on it but we wanted to make an ugly functioning site rather than a broken pretty looking site.
